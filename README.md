@@ -9,8 +9,9 @@ To Do:
 ## Optional
 Simcloud Docker Image (https://github.com/dobots/simcloud)
 
-## HOW TO USE:
+## 1. HOW TO USE:
 
+### 1.0  Launching the environment
 This system is was tested and ran on the SimCloud ros_melodic_desktop_px4 docker image. But should be suitable for any ros system.
 
 
@@ -30,7 +31,7 @@ Alternatively you may use an empty world from Gazebo:
 roslaunch gazebo_ros empty_world.launch
 ```
 
-Launch the camera model
+### 1.1 Launch the camera model
 
 ```
 roslaunch object_cam spawn_model.launch
@@ -47,7 +48,7 @@ rosrun object_cam pos.py unit_box
 ```
 
 If run correctly the camera is now linked to that object, and will also update its position if the object is moved.
-## Viewing the video stream
+### 1.2 Viewing the video stream
 If launched succesffuly the video stream topic can be viewed via:
 ```
 rostopic list
@@ -56,14 +57,14 @@ rostopic list
 The topic "/camera/image_raw" should be dislayed.
 
 
-### Launching the video server
+### 1.4 Launching the video server
 This step converts the video stream to a web accessible stream.
 ```
 roslaunch object_cam start_web_server.launch
 ```
 This stream can be view by openign a browser to "localhost:8080"
 
-### Streaming video to youtube
+### 1.5 Streaming video to youtube
 To stream the video to youtube, you must first create a youtube streaming account. Navigate to the streaming page of youtube.
 ![Stream_key](https://user-images.githubusercontent.com/27964546/151963265-7eecb42e-5280-4ae2-b1a3-18fd949fe2b9.png)
 
@@ -89,3 +90,7 @@ In this folder run the streaming script.
 ```
 ./youtube_stream.sh
 ```
+### 1.6 Saving your videos
+If you want to save your videos, repeat all the steps from Section **1.0 to 1.4**, and instead of the starting the stream. You will instead save the video.
+
+
