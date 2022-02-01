@@ -1,0 +1,9 @@
+# Ignore pass.key databases
+streaming/key.conf
+
+## exclude content of file
+videos/*
+
+## exception
+!videos/.gitignore
+
