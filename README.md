@@ -4,6 +4,7 @@ A robot which can track an object or Robot in Gazebo, and stream the video via Y
 To Do:
 - Make camera functional in GzWeb
 - Streamline launch files and nodes
+- Include Twitch Stream
 
 ## Optional
 Simcloud Docker Image (https://github.com/dobots/simcloud)
