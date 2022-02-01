@@ -87,5 +87,5 @@ After creating your streaming key.
 In this folder run the streaming script.
 
 ```
-./working_stream.sh
+./youtube_stream.sh
 ```
