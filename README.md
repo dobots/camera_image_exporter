@@ -17,10 +17,6 @@ To Do:
 
 - Streamline launch files and nodes
 
-## Dependencies:
-web_video_server (ROS Package)
-ffmpeg
-
 ## Optional
 Simcloud Docker Image (https://github.com/dobots/simcloud)
 
@@ -39,12 +35,17 @@ roslaunch environments simple_shapes.launch
 ```
 ![gazebo_shapes](https://user-images.githubusercontent.com/27964546/151209141-92733f6a-b388-4e67-8164-b6979542822a.png)
 
+Alternatively you may use an empty world from Gazebo:
+
+```
+roslaunch gazebo_ros empty_world.launch
+```
 
 Launch the camera model
 
-'''
+```
 roslaunch dronecam spawn_model.launch
-'''
+```
 
 The camera is launched but is not tracking any object. To track an object we will use the pos.py node.
 To use this node you must give it an object to track. Open Gazebo and give it a model to track from the model list.
@@ -55,7 +56,8 @@ For this example we will use the unit_box.
 ```
 rosrun dronecam pos.py unit_box
 ```
-If run correctly the camera is now linke dot that object, and will also update its position if the object is moved.
+
+If run correctly the camera is now linked to that object, and will also update its position if the object is moved.
 ## Viewing the video stream
 If launched succesffuly the video stream topic can be viewed via:
 ```
@@ -73,7 +75,9 @@ roslaunch dronecam start_web_server.launch
 This stream can be view by openign a browser to "localhost:8080"
 
 ### Streaming video to youtube
-To stream the video to youtube, you must first create a youtube streaming account. Here you will receive a streaming key.
+To stream the video to youtube, you must first create a youtube streaming account. Navigate to the streaming page of youtube.
+![Stream_key](https://user-images.githubusercontent.com/27964546/151963265-7eecb42e-5280-4ae2-b1a3-18fd949fe2b9.png)
+
 After receiving your streaming key navigate to the streaming folder and open the example_key.conf
 ```
 cd streaming
