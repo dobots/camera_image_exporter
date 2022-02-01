@@ -1,20 +1,8 @@
-# dronecam
+# Object Cam
 A robot which can track an object or Robot in Gazebo, and stream the video via Youtube, (Or Twitch). Or save the video recording.
-
-Done:
-[x] Insert a camera into Gazebo and view its output
-
-[x] Stream the video to an Ip Address (Necesarry for Streaming)
-
-[x] Stream video to youtube
-
-[x] Node is able to select object to track
 
 To Do:
 - Make camera functional in GzWeb
-
-- Instruction Manuals
-
 - Streamline launch files and nodes
 
 ## Optional
@@ -26,7 +14,7 @@ This system is was tested and ran on the SimCloud ros_melodic_desktop_px4 docker
 
 
 ```
-cd dronecam
+cd object_cam
 ```
 
 This system can be run on any world, but for this example we will be using the Simple Shape environment from the Simcloud repo..
@@ -44,7 +32,7 @@ roslaunch gazebo_ros empty_world.launch
 Launch the camera model
 
 ```
-roslaunch dronecam spawn_model.launch
+roslaunch object_cam spawn_model.launch
 ```
 
 The camera is launched but is not tracking any object. To track an object we will use the pos.py node.
@@ -54,7 +42,7 @@ To use this node you must give it an object to track. Open Gazebo and give it a 
 For this example we will use the unit_box.
 
 ```
-rosrun dronecam pos.py unit_box
+rosrun object_cam pos.py unit_box
 ```
 
 If run correctly the camera is now linked to that object, and will also update its position if the object is moved.
@@ -70,7 +58,7 @@ The topic "/camera/image_raw" should be dislayed.
 ### Launching the video server
 This step converts the video stream to a web accessible stream.
 ```
-roslaunch dronecam start_web_server.launch
+roslaunch object_cam start_web_server.launch
 ```
 This stream can be view by openign a browser to "localhost:8080"
 
