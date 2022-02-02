@@ -1,20 +1,32 @@
 #! /bin/bash
 #
-# Diffusion youtube avec ffmpeg
+# s indicates the source of the videostream default: http://0.0.0.0:8080/stream?topic=/camera/image_raw
+#
+#
+#
+#Sourcing stream key value
+MAIN_SCRIPT_DIR=$(dirname "${BASH_SOURCE[0]}")
+echo $MAIN_SCRIPT_DIR
+#cd MAIN_SCRIPT_DIR
+. key.conf
+echo $KEY
 
-# Configurer youtube avec une résolution 720p. La vidéo n'est pas scalée.
+while getops i:k: flag
+do
+	case "${flag}" in
+		s) input=$(OPTARG);;
+		k) key=$(OPTARG);;
+	esac
+done
 
-VBR="100000"                                    # Bitrate de la vidéo en sortie
-FPS="30"                                       # FPS de la vidéo en sortie
-QUAL="low"                                  # Preset de qualité FFMPEG
-YOUTUBE_URL="rtmp://a.rtmp.youtube.com/live2"  # URL de base RTMP youtube
+if [ -n $input ]
+then
+	input = http://0.0.0.0:8080/stream?topic=/camera/image_raw
+fi
 
-SOURCE="http://0.0.0.0:8080/stream?topic=/test/camera/image_raw"              # Source UDP (voir les annonces SAP)
-KEY=""                                     # Clé à récupérer sur l'event youtube
-
-ffmpeg \
-    -i "$SOURCE" -deinterlace \
-    -vcodec libx264 -pix_fmt yuv420p -preset $QUAL -r $FPS -g $(($FPS * 2)) -b:v $VBR \
-    -acodec libmp3lame -ar 44100 -threads 6 -q:a 3 -b:v 100000 -bufsize 512k \
-    -f flv "$YOUTUBE_URL/$KEY"
+ffmpeg 	\
+	-re -f mjpeg\
+        -i "http://0.0.0.0:8080/stream?topic=/camera/image_raw" -f lavfi -i anullsrc -c:v libx264\
+        -g 60 -c:a aac -ar 44100 -ac 2\
+        -f flv "rtmp://a.rtmp.youtube.com/live2/${KEY}"
 
