@@ -92,5 +92,12 @@ In this folder run the streaming script.
 ```
 ### 1.6 Saving your videos
 If you want to save your videos, repeat all the steps from Section **1.0 to 1.4**, and instead of the starting the stream. You will instead save the video.
+The save video shell script allows you to choose the length of the video by using the flag -t followed by the amount of seconds you want to record.
+**Example:**
 
+```
+./save_video.sh -t 100
+```
+Would record a video for 100 seconds. **If no time is given, the default is 10 seconds**
 
+All the recorded videos are saved in the "object_cam/videos" directory.
