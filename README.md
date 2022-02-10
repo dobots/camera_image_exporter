@@ -6,32 +6,44 @@ To Do:
 - Streamline launch files and nodes
 - Include Twitch Stream
 
-## Optional
-You may use the Simcloud Docker image from DoBots.
-Simcloud Docker Image (https://github.com/dobots/simcloud)
-
 ## 1. HOW TO USE:
 
-### 1.0 Clone the repository and build package
-Clone this repository and [build the catkin package](https://catkin-tools.readthedocs.io/en/latest/verbs/catkin_build.html)
+### 1.0.0 Optional: Using the Simcloud Docker image
+You may use the Simcloud Docker image from DoBots.
+Simcloud Docker Image (https://github.com/dobots/simcloud)
+This file is also available in this repository in the docker directory.
 
+""If you are not familiar with Docker, it is recommended to use the Simcloud tutorial.""
+
+       
+
+### 1.0 Clone the repository and build package
 Navigate to your catkin workspace, if you do not have one, [create one](http://wiki.ros.org/catkin/Tutorials/create_a_workspace).
 
-In your catkin_ws:
+Clone this repository and [build the catkin package](https://catkin-tools.readthedocs.io/en/latest/verbs/catkin_build.html)
+
+
+In your catkin workspace, navigate to the src file and clone the repo:
+
 ```
 cd src
 git clone https://github.com/dobots/camera_image_exporter.git
+cd ..
 catkin_make
 ```
+
+ 
 
 ### 1.1  Launching the environment
 This system is was tested and ran on the SimCloud ros_melodic_desktop_px4 docker image. But should be suitable for any ros system.
 
+After cloning the repository.
+Navigate to the repository
 ```
 cd camera_image_exporter
 ```
 
-This system can be run on any world, but for this example we will be using the Simple Shape environment from the Simcloud repo..
+This system can be run on any world, but for this example we will be using the Simple Shape environment from the Simcloud repository.
 ```
 roslaunch environments simple_shapes.launch
 ```
@@ -44,22 +56,28 @@ roslaunch gazebo_ros empty_world.launch
 ```
 
 ### 1.1 Launch the camera model
-
+Here we will launch the camera model. The camera model is a simple "Robot" which outputs a video stream as a topic.
 ```
 roslaunch camera_image_exporter spawn_model.launch
 ```
-
 The camera is launched but is not tracking any object. To track an object we will use the pos.py node.
+The pos.py node can be located in the ""scripts"" directory of this repository.
+
 To use this node you must give it an object to track. Open Gazebo and give it a model to track from the model list.
+Marked in the red square below:
 ![gazebo_models](https://user-images.githubusercontent.com/27964546/151209328-1fc4e32d-fb42-451a-a2a9-fed1ca7b86b3.png)
 
-For this example we will use the unit_box.
+For this example we will use the unit_box. To run the node pos.py, you must give at an object to follow. Thus the structure would be:
+ronsrun camera_image_exporter pos.py [object_name]
 
 ```
 rosrun camera_image_exporter pos.py unit_box
 ```
 
 If run correctly the camera is now linked to that object, and will also update its position if the object is moved.
+You may test this by manually moving the object in Gazebo:
+
+
 ### 1.2 Viewing the video stream
 If launched succesffuly the video stream topic can be viewed via:
 ```
