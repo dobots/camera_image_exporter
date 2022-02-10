@@ -7,9 +7,13 @@ To Do:
 - Include Twitch Stream
 
 ## Optional
+You may use the Simcloud Docker image from DoBots.
 Simcloud Docker Image (https://github.com/dobots/simcloud)
 
 ## 1. HOW TO USE:
+
+### 1.0 Clone the repository and build package
+Clone this repository and [build the catkin package](https://catkin-tools.readthedocs.io/en/latest/verbs/catkin_build.html)
 
 ### 1.0  Launching the environment
 This system is was tested and ran on the SimCloud ros_melodic_desktop_px4 docker image. But should be suitable for any ros system.
