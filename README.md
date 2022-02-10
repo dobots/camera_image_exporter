@@ -14,7 +14,9 @@ Simcloud Docker Image (https://github.com/dobots/simcloud)
 
 ### 1.0 Clone the repository and build package
 Clone this repository and [build the catkin package](https://catkin-tools.readthedocs.io/en/latest/verbs/catkin_build.html)
+
 Navigate to your catkin workspace, if you do not have one, [create one](http://wiki.ros.org/catkin/Tutorials/create_a_workspace).
+
 In your catkin_ws:
 ```
 cd src
