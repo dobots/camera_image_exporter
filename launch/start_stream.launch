@@ -1,9 +1,0 @@
-<?xml version="1.0"?>
-<launch>
-     
-<node pkg="object_cam"
-                type="working_stream.sh" name="Youtube_stream"
-        />
-
-
-</launch>
