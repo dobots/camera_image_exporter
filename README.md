@@ -1,4 +1,4 @@
-# Object Cam
+# Camera Image Exporter
 A robot which can track an object or Robot in Gazebo, and stream the video via Youtube, (Or Twitch). Or save the video recording.
 
 To Do:
@@ -34,9 +34,7 @@ catkin_make
 
  
 
-### 1.1  Launching the environment
-This system is was tested and ran on the SimCloud ros_melodic_desktop_px4 docker image. But should be suitable for any ros system.
-
+### 1.1.1  Launching the environment in Simcloud
 After cloning the repository.
 Navigate to the repository
 ```
@@ -49,11 +47,14 @@ roslaunch environments simple_shapes.launch
 ```
 ![gazebo_shapes](https://user-images.githubusercontent.com/27964546/151209141-92733f6a-b388-4e67-8164-b6979542822a.png)
 
-Alternatively you may use an empty world from Gazebo:
-
+### Alternative: Launching Environment without Simcloud
+If you do not want to use the simcloud environment, you may use the gazebo empty world.
 ```
 roslaunch gazebo_ros empty_world.launch
 ```
+If you do use the gazebo empty_word:
+Insert a box into the world, by clicking the box object in Gazebo and inserting it into the world.
+![Square_Marked_red](https://user-images.githubusercontent.com/27964546/153565973-8d534516-7dc9-43c2-8866-7846f0763625.png)
 
 ### 1.1 Launch the camera model
 Here we will launch the camera model. The camera model is a simple "Robot" which outputs a video stream as a topic.
@@ -62,17 +63,20 @@ roslaunch camera_image_exporter spawn_model.launch
 ```
 The camera is launched but is not tracking any object. To track an object we will use the pos.py node.
 The pos.py node can be located in the ""scripts"" directory of this repository.
+
 camera_image_exporter
 |---   scripts
        |
        |---   pos.py
+
 To use this node you must give it an object to track. Open Gazebo and give it a model to track from the model list.
 Marked in the red square below:
 ![gazebo_models](https://user-images.githubusercontent.com/27964546/151209328-1fc4e32d-fb42-451a-a2a9-fed1ca7b86b3.png)
 
-For this example we will use the unit_box. To run the node pos.py, you must give at an object to follow. Thus the structure would be:
+To run the node pos.py, you must give at an object to follow. Thus the structure would be:
 
 rosrun camera_image_exporter pos.py [object_name]
+
 So for this example we will use unit_box
 
 ```
