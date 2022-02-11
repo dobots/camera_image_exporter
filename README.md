@@ -62,13 +62,18 @@ roslaunch camera_image_exporter spawn_model.launch
 ```
 The camera is launched but is not tracking any object. To track an object we will use the pos.py node.
 The pos.py node can be located in the ""scripts"" directory of this repository.
-
+camera_image_exporter
+|---   scripts
+       |
+       |---   pos.py
 To use this node you must give it an object to track. Open Gazebo and give it a model to track from the model list.
 Marked in the red square below:
 ![gazebo_models](https://user-images.githubusercontent.com/27964546/151209328-1fc4e32d-fb42-451a-a2a9-fed1ca7b86b3.png)
 
 For this example we will use the unit_box. To run the node pos.py, you must give at an object to follow. Thus the structure would be:
-ronsrun camera_image_exporter pos.py [object_name]
+
+rosrun camera_image_exporter pos.py [object_name]
+So for this example we will use unit_box
 
 ```
 rosrun camera_image_exporter pos.py unit_box
