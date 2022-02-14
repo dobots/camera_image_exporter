@@ -88,22 +88,43 @@ You may test this by manually moving the object in Gazebo:
 
 
 ### 1.2 Viewing the video stream
-If launched succesffuly the video stream topic can be viewed via:
+The camera robot locks onto an object and streams the video via a [Ros Topic](http://wiki.ros.org/Topics). And thus can be interacted with. To see if the camera robot has been launched succesfully, open a terminal and execute the following commands:
 ```
 rostopic list
 ```
-
-The topic "/camera/image_raw" should be dislayed.
+If the camera has been launched succesffuly, the topic
+```
+/camera/image_raw"
+```
+Should be dislayed.
 
 
 ### 1.4 Launching the video server
+This package does not directly stream or convert the rostopic stream. It first converts the rostopic to a video stream and sends it to Ia local IP and port.
 This step converts the video stream to a web accessible stream.
+This conversion is done via a ros package [ros_video_server](http://wiki.ros.org/web_video_server), but if you cloned and build this package it is included.
+To launch this package:
 ```
 roslaunch camera_image_exporter start_web_server.launch
 ```
-This stream can be view by openign a browser to "localhost:8080"
+To see if the stream converter has worked properly, the video stream is accessible via the browser.
+Open a browser to "localhost:8080"
 
-### 1.5 Streaming video to youtube
+If you are running this via the Simcloud docker image, you the adress is  [docker container IP]:8080.
+To find the docker container IP, run this command in a terminal outside of docker container
+```
+docker container list
+```
+Locate the container ID of the simcloud environment, where you are running the simulations. The insert this container ID into the following command.
+```
+docker inspect [container ID]
+```
+And find the IP adress. Then open a browser and direct it to [docker container IP]:8080 
+
+### 1.5 Video Processing
+This package van take the IP video stream and either stream the video or save the video as a recording, depending on which step you take, you may choose to go to ** 1.5.1 ** to stream to Youtube or ** 1.5.2** to save video.
+
+### 1.5.1 Streaming video to youtube
 To stream the video to youtube, you must first create a youtube streaming account. Navigate to the streaming page of youtube.
 ![Stream_key](https://user-images.githubusercontent.com/27964546/151963265-7eecb42e-5280-4ae2-b1a3-18fd949fe2b9.png)
 
@@ -129,7 +150,7 @@ In this folder run the streaming script.
 ```
 ./youtube_stream.sh
 ```
-### 1.6 Saving your videos
+### 1.5.2 Saving your videos
 If you want to save your videos, repeat all the steps from Section **1.0 to 1.4**, and instead of the starting the stream. You will instead save the video.
 The save video shell script allows you to choose the length of the video by using the flag -t followed by the amount of seconds you want to record.
 **Example:**
