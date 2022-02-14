@@ -122,7 +122,7 @@ docker inspect [container ID]
 And find the IP adress. Then open a browser and direct it to [docker container IP]:8080 
 
 ### 1.5 Video Processing
-This package van take the IP video stream and either stream the video or save the video as a recording, depending on which step you take, you may choose to go to ** 1.5.1 ** to stream to Youtube or ** 1.5.2** to save video.
+This package van take the IP video stream and either stream the video or save the video as a recording, depending on which step you take, you may choose to go to **1.5.1** to stream to Youtube or **1.5.2** to save video.
 
 ### 1.5.1 Streaming video to youtube
 To stream the video to youtube, you must first create a youtube streaming account. Navigate to the streaming page of youtube.
