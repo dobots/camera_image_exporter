@@ -41,5 +41,5 @@ fi
 
 #echo MyOutput_$i
 
-ffmpeg -i "http://0.0.0.0:8080/stream?topic=/camera/image_raw" -t $parameter_time -f flv ../videos/$parameter_output
+ffmpeg -i "http://0.0.0.0:8080/stream?topic=/camera/image_raw" -t $parameter_time -f flv ../video/$parameter_output
 

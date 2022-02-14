@@ -9,6 +9,18 @@ import roslib
 import sys
 import rospy
 from std_msgs.msg import String
+import socket
+
+
+def isOpen(ip,port):
+   s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+   try:
+      s.connect((ip, int(port)))
+      s.shutdown(2)
+      return True
+   except:
+      return False
+
 
 class Block:
 	def __init__(self, name, relative_entity_name):
@@ -72,7 +84,8 @@ class pos_find:
 			resp = set_state( state_msg )
 		except rospy.ServiceException, e:
 			print ("Service call failed: ")
-		rate.sleep()
+		if(!isOpen(127.0.0.1,8080))
+        rate.sleep()
 if __name__ == '__main__':
 	if(len(sys.argv)>1):
 		block = str(sys.argv[1])
@@ -82,4 +95,5 @@ if __name__ == '__main__':
 		sys.exit(1)
 	position = pos_find()
 	print(position)
+    
 	position.update_gazebo_models()      
