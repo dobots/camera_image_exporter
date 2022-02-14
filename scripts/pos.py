@@ -13,7 +13,7 @@ from std_msgs.msg import String
 class Block:
 	def __init__(self, name, relative_entity_name):
 	    self._name = name
-        self._relative_entity_name = relative_entity_name
+            self._relative_entity_name = relative_entity_name
 
 
 
@@ -29,7 +29,7 @@ class pos_find:
         self.ori_y = 0
         self.ori_z = 0
         if(distance == None):
-            self.distance = 2 
+            self.distance = 3 
 
     def get_pos(self):    
         model_coordinates = rospy.ServiceProxy('/gazebo/get_model_state', GetModelState)
@@ -53,37 +53,33 @@ class pos_find:
                     "\nw:\t", str(self.ori_w))
        	return (" ")
         
-    	def update_gazebo_models(self):
-        	rate = rospy.Rate(10) # 10hz
-        	while not rospy.is_shutdown():
-			self.get_pos()
-	    		state_msg = ModelState()
-            		state_msg.model_name = 'camera'
-            		state_msg.pose.position.x = self.pos_x - (self.distance**2)/(1.73205)
-            		state_msg.pose.position.y = self.pos_y - (self.distance**2)/(1.73205)
-            		state_msg.pose.position.z = self.pos_z + (self.distance**2)/(1.73205)
-            		state_msg.pose.orientation.x = 0.194709171154
-            		state_msg.pose.orientation.y = 0.194709171154
-	    		state_msg.pose.orientation.z = 0.194709171154
-            		state_msg.pose.orientation.w = 1
-            		rospy.wait_for_service('/gazebo/set_model_state')
-            		try:
-                		set_state = rospy.ServiceProxy('/gazebo/set_model_state', SetModelState)
-                		resp = set_state( state_msg )
-
-            		except rospy.ServiceException, e:
-                		print ("Service call failed: ")
-            		rate.sleep()
-
-
+    def update_gazebo_models(self):
+	rate = rospy.Rate(10) # 10hz
+	while not rospy.is_shutdown():
+		self.get_pos()
+		state_msg = ModelState()
+		state_msg.model_name = 'camera'
+		state_msg.pose.position.x = self.pos_x - (self.distance**2)/(1.73205)
+		state_msg.pose.position.y = self.pos_y - (self.distance**2)/(1.73205)
+		state_msg.pose.position.z = self.pos_z + (self.distance**2)/(1.73205)
+		state_msg.pose.orientation.x = 0
+		state_msg.pose.orientation.y = 0.194709171154
+		state_msg.pose.orientation.z = 0.194709171154
+		state_msg.pose.orientation.w = 1
+		rospy.wait_for_service('/gazebo/set_model_state')
+		try:
+			set_state = rospy.ServiceProxy('/gazebo/set_model_state', SetModelState)
+			resp = set_state( state_msg )
+		except rospy.ServiceException, e:
+			print ("Service call failed: ")
+		rate.sleep()
 if __name__ == '__main__':
 	if(len(sys.argv)>1):
-        	block = str(sys.argv[1])
-        	print(block)
-    
-    	else:
-        	print("Please add object to follow")
-        	sys.exit(1)
-    	position = pos_find()
-    	print(position)
-    	position.update_gazebo_models()      
+		block = str(sys.argv[1])
+		print(block)
+	else:
+		print("Please add object to follow")
+		sys.exit(1)
+	position = pos_find()
+	print(position)
+	position.update_gazebo_models()      
