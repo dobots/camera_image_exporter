@@ -56,7 +56,7 @@ If you do use the gazebo empty_word:
 Insert a box into the world, by clicking the box object in Gazebo and inserting it into the world.
 ![Square_Marked_red](https://user-images.githubusercontent.com/27964546/153565973-8d534516-7dc9-43c2-8866-7846f0763625.png)
 
-### 1.1 Launch the camera model
+### 1.2 Launch the camera model
 Here we will launch the camera model. The camera model is a simple "Robot" which outputs a video stream as a topic.
 ```
 roslaunch camera_image_exporter spawn_model.launch
@@ -88,7 +88,7 @@ You may test this by manually moving the object in Gazebo, for example by changi
 ![locked_pic](https://user-images.githubusercontent.com/27964546/153851804-4c9886df-71b8-4ae8-8a95-0865b7791b9d.png)
 
 
-### 1.2 Viewing the video stream
+### 1.3 Viewing the video stream
 The camera robot locks onto an object and streams the video via a [Ros Topic](http://wiki.ros.org/Topics). And thus can be interacted with. To see if the camera robot has been launched succesfully, open a terminal and execute the following commands:
 ```
 rostopic list
@@ -152,7 +152,7 @@ In this folder run the streaming script.
 ./youtube_stream.sh
 ```
 ### 1.5.2 Saving your videos
-If you want to save your videos, repeat all the steps from Section **1.0 to 1.4**, and instead of the starting the stream. You will instead save the video.
+Repeat all steps from Section **1.0 to 1.4**, and instead of the starting the stream. You will instead save the video.
 The save video shell script allows you to choose the length of the video by using the flag -t followed by the amount of seconds you want to record.
 **Example:**
 
@@ -161,4 +161,5 @@ The save video shell script allows you to choose the length of the video by usin
 ```
 Would record a video for 100 seconds. **If no time is given, the default is 10 seconds**
 
-All the recorded videos are saved in the "camera_image_exporter/videos" directory.
+If you desire to record until exit, give a large value (>10000), when the stream is exited, the video is automatically saved.
+All the recorded videos are saved in the "camera_image_exporter/video" directory.
