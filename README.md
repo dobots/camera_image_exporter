@@ -132,14 +132,24 @@ And find the IP adress. Then open a browser and direct it to [docker container I
 
 ### 1.5 Video Processing
 This package van take the IP video stream and either stream the video or save the video as a recording, depending on which step you take, you may choose to go to **1.5.1** to stream to Youtube or **1.5.2** to save video.
-
+Navigate to the video directory:
+```
+|camera_image_exporter
+       |---   video
+              |
+              |---   save_video.sh
+              |---   youtube_stream.sh
+```
+```
+cd video
+```
 ### 1.5.1 Streaming video to youtube
 To stream the video to youtube, you must first create a youtube streaming account. Navigate to the streaming page of youtube.
 ![Stream_key](https://user-images.githubusercontent.com/27964546/151963265-7eecb42e-5280-4ae2-b1a3-18fd949fe2b9.png)
 
 After receiving your streaming key navigate to the streaming folder and open the example_key.conf
 ```
-cd streaming
+cd video
 nano example_key
 ```
 Your should see:
