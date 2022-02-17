@@ -1,8 +1,10 @@
 ## exclude content of file
 /video/key.conf
 
-/video/saved/*
+/video/saved_videos/*
+
+/video/test_save.sh
 
 ## exception
-!/video/saved/.gitignore
+!/video/saved_videos/.gitignore
 
