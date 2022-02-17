@@ -161,13 +161,18 @@ In this folder run the streaming script.
 ```
 ### 1.5.2 Saving your videos
 Repeat all steps from Section **1.0 to 1.4**. And continue in this step to save a video.
-The save video shell script allows you to choose the length of the video by using the flag -t followed by the amount of seconds you want to record.
+The save video shell script has multiple flags you can use:
+```
+-t Recording time in seconds.
+-o Output file name (Use either no extension or ".mp4" extension"
+```
 **Example:**
 
 ```
-./save_video.sh -t 100
+./save_video.sh -t 100 -o Dronevid.mp4
 ```
-Would record a video for 100 seconds. **If no time is given, the default is 10 seconds**
-
+Would record a video for 100 seconds and save under filename Dronevid.mp4. 
+**If no time is given, the default is 10 seconds**
+**If no file name is given "MyVideo_{n}" will be used, where n is an integer starting from 0, until a unused filename is found, Example: MyVideo0.mp4** 
 If you desire to record until exit, give a large value (>10000), when the stream is exited, the video is automatically saved.
 All the recorded videos are saved in the "camera_image_exporter/video" directory.
