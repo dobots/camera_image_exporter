@@ -84,7 +84,13 @@ rosrun camera_image_exporter pos.py unit_box
 ```
 
 If run correctly the camera is now linked to that object, and will also update its position if the object is moved.
+
 You may test this by manually moving the object in Gazebo, for example by changing the x values (displayed bellow):
+You can access this by selecting the object you want to move, in our case the "unit_box":
+|World
+|---   Models
+       |---   unit_box
+              |---   pose
 ![locked_pic](https://user-images.githubusercontent.com/27964546/153851804-4c9886df-71b8-4ae8-8a95-0865b7791b9d.png)
 
 
