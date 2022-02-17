@@ -5,6 +5,7 @@ To Do:
 - Make camera functional in GzWeb
 - Streamline launch files and nodes
 - Include Twitch Stream
+- Allow different topic streams
 
 ## 1. HOW TO USE:
 
