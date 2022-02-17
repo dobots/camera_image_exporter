@@ -83,8 +83,6 @@ So for this example we will use unit_box
 rosrun camera_image_exporter pos.py unit_box
 ```
 
-If run correctly the camera is now linked to that object, and will also update its position if the object is moved.
-
 You may test this by manually moving the object in Gazebo, for example by changing the x values (displayed bellow):
 You can access this by selecting the object you want to move, in our case the "unit_box":
 ```
@@ -95,8 +93,10 @@ You can access this by selecting the object you want to move, in our case the "u
 ```
 ![locked_pic](https://user-images.githubusercontent.com/27964546/153851804-4c9886df-71b8-4ae8-8a95-0865b7791b9d.png)
 
+If run correctly the camera is now linked to that object, and will also update its position if the object is moved.
 
-### 1.3 Viewing the video stream
+
+### 1.3 Controlling the the video topic
 The camera robot locks onto an object and streams the video via a [Ros Topic](http://wiki.ros.org/Topics). And thus can be interacted with. To see if the camera robot has been launched succesfully, open a terminal and execute the following commands:
 ```
 rostopic list
@@ -109,7 +109,7 @@ Should be dislayed.
 
 
 ### 1.4 Launching the video server
-This package does not directly stream or convert the rostopic stream. It first converts the rostopic to a video stream and sends it to Ia local IP and port.
+This package does not directly stream or convert the rostopic stream. It first converts the rostopic to a video stream and sends it to a local IP and port.
 This step converts the video stream to a web accessible stream.
 This conversion is done via a ros package [ros_video_server](http://wiki.ros.org/web_video_server), but if you cloned and build this package it is included.
 To launch this package:
@@ -119,7 +119,7 @@ roslaunch camera_image_exporter start_web_server.launch
 To see if the stream converter has worked properly, the video stream is accessible via the browser.
 Open a browser to "localhost:8080"
 
-If you are running this via the Simcloud docker image, you the adress is  [docker container IP]:8080.
+If you are running this via the Simcloud docker image, you may access the stream via, the adress [docker container IP]:8080.
 To find the docker container IP, run this command in a terminal outside of docker container
 ```
 docker container list
@@ -160,7 +160,7 @@ In this folder run the streaming script.
 ./youtube_stream.sh
 ```
 ### 1.5.2 Saving your videos
-Repeat all steps from Section **1.0 to 1.4**, and instead of the starting the stream. You will instead save the video.
+Repeat all steps from Section **1.0 to 1.4**. And continue in this step to save a video.
 The save video shell script allows you to choose the length of the video by using the flag -t followed by the amount of seconds you want to record.
 **Example:**
 
