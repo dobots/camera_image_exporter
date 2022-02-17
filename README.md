@@ -175,7 +175,7 @@ Would record a video for 100 seconds and saved under filename "Dronevid.mp4".
 
 **If no time is given, the default is 10 seconds**
 
-**If no file name is given "MyVideo_{n}" will be used, where n is an integer starting from 0, until a unused filename is found, Example: MyVideo0.mp4** 
+**If no file name is given "MyVideo{n}" will be used, where n is an integer starting from 0, until a unused filename is found, Example: MyVideo0.mp4** 
 
 If you desire to record until exit, give a large value (>10000), when the stream is exited, the video is automatically saved.
-All the recorded videos are saved in the "camera_image_exporter/video" directory.
+All the recorded videos are saved in the "camera_image_exporter/saved_videos" directory.
